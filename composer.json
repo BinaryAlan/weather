@@ -1,0 +1,28 @@
+{
+    "name": "alanliao\/weather",
+    "description": "a weather sdk",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "LiaoChao",
+            "email": "76660421@qq.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "phpunit/phpunit": "^7.3",
+        "mockery/mockery": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alanliao\\Weather\\": "src"
+        }
+    },
+    "extra": {
+        "laravel":{
+            "providers":[
+                "Alanliao\\Weather\\ServiceProvider"
+            ]
+        }
+    }
+}
