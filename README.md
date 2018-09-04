@@ -159,7 +159,7 @@ array | string   getWeather(string $city, string $type = 'live', string $format 
 - `$type` - 返回内容类型：`live`: 返回实况天气 / `forecast`:返回预报天气；
 - `$format` - 输出的数据格式，默认为 json 格式，当 output 设置为 “`xml`” 时，输出的为 XML 格式的数据。
 
-##在laravel中使用
+## 在laravel中使用
 在 Laravel 中使用也是同样的安装方式，配置写在 `config/services.php` 中：
 ```php
     .
@@ -173,7 +173,7 @@ array | string   getWeather(string $city, string $type = 'live', string $format 
 ```php
 WEATHER_API_KEY=xxxxxxxxxxxxxxxxxxxxx
 ```
-可以用两种方式来获取 Overtrue\Weather\Weather 实例：
+可以用两种方式来获取 Alanliao\Weather\Weather 实例：
 
 ## 方法参数注入
 ```php
