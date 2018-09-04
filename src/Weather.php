@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * This file is part of the alanliao/weather.
+ *
+ * (c) alanliao <76660421@qq.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
 namespace Alanliao\Weather;
 
 use Alanliao\Weather\Exceptions\HttpException;
@@ -8,7 +18,9 @@ use GuzzleHttp\Client;
 class Weather
 {
     protected $key;
+
     protected $guzzleOptions = [];
+
     public function __construct($key)
     {
         $this->key = $key;
@@ -29,6 +41,7 @@ class Weather
         $types                          = [
             "live"     => "base",
             "forecast" => "all",
+
         ];
         if (!\in_array(\strtolower($format), ['json', 'xml'])) {
             throw new InvalidArgumentException('Invalid response format: ' . $format);
@@ -42,16 +55,16 @@ class Weather
             'output'     => strtolower($format),
             'extensions' => strtolower($types[$type]),
         ]);
-        try {
 
+        try {
             $response = $this->getHttpClient()->get($url, [
                 'query' => $query,
             ])->getBody()->getContents();
-            return $format === 'json' ? \json_decode($response, true) : $response;
+
+            return 'json' === $format ? \json_decode($response, true) : $response;
         } catch (\Exception $e) {
             throw new HttpException($e->getMessage(), $e->getCode(), $e);
         }
-
     }
 
     public function getLiveWeather($city, $format = 'json')
@@ -63,5 +76,4 @@ class Weather
     {
         return $this->getWeather($city, 'forecast', $format);
     }
-
 }
