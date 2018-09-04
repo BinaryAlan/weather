@@ -37,22 +37,22 @@ class Weather
     }
 
     public function getWeather($city, $type = 'live', $format = 'json')
-    {$url = 'https://restapi.amap.com/v3/weather/weatherInfo';
-        $types                          = [
-            "live"     => "base",
-            "forecast" => "all",
-
+    {
+        $url = 'https://restapi.amap.com/v3/weather/weatherInfo';
+        $types = [
+            'live' => 'base',
+            'forecast' => 'all',
         ];
         if (!\in_array(\strtolower($format), ['json', 'xml'])) {
-            throw new InvalidArgumentException('Invalid response format: ' . $format);
+            throw new InvalidArgumentException('Invalid response format: '.$format);
         }
         if (!\array_key_exists(\strtolower($type), $types)) {
-            throw new InvalidArgumentException('Invalid type value(live/forecast): ' . $type);
+            throw new InvalidArgumentException('Invalid type value(live/forecast): '.$type);
         }
         $query = array_filter([
-            'key'        => $this->key,
-            'city'       => $city,
-            'output'     => strtolower($format),
+            'key' => $this->key,
+            'city' => $city,
+            'output' => strtolower($format),
             'extensions' => strtolower($types[$type]),
         ]);
 
